@@ -242,7 +242,8 @@ function normalizePaintAttribute(attribute, layer) {
     if (!name) {
         name = attribute.property.replace(`${layer.type}-`, '').replace(/-/g, '_');
     }
-    const isColor = layer._paintSpecifications[attribute.property].type === 'color';
+    const spec = layer._paintSpecifications[attribute.property];
+    const isColor = spec && spec.type === 'color';
 
     return util.extend({
         name: `a_${name}`,
